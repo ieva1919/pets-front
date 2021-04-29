@@ -1,5 +1,4 @@
 import { loader } from 'graphql.macro';
-import Image from 'material-ui-image';
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -12,6 +11,7 @@ import { getAnimalAge, getAnimalWeight } from '../../utils/animal';
 import LayoutMultiColRow from '../layout/LayoutMultiColRow';
 import AnimalDetailsHeader from './details/AnimalDetailsHeader';
 import AnimalEvents from './events/AnimalEvents';
+import PictureGallery from './PictureGallery';
 
 const GET_ANIMAL_DETAILS = loader('../../graphql/queries/animal-details.graphql');
 
@@ -69,7 +69,8 @@ function AnimalDetails({ onLoad }: AnimalDetailsProps) {
                         onBack={() => history.goBack()}
                         breed={animal.details?.breed?.value}
                     />
-                    <Image src={animal.imageUrl!} aspectRatio={3 / 2} cover />
+                    {/* <Image src={animal.imageUrl!} aspectRatio={3 / 2} cover /> */}
+                    <PictureGallery images={[animal.imageUrl || '']} />
                     {animal.details && (
                         <>
                             <Box mt={3} mb={2}>
